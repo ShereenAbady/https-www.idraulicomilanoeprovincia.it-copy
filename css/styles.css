@@ -1,21 +1,29 @@
 /* General Styles */
 body {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-/* Header */
+/* Sticky Header */
 .header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background: white;
 }
 
-/* Logo - Smaller Size */
+/* Logo */
 .logo img {
-    width: 100px;
+    width: 150px;
     height: auto;
 }
 
@@ -23,9 +31,7 @@ body {
 .nav-menu {
     list-style: none;
     display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
+    gap: 15px;
 }
 
 .nav-menu li {
@@ -34,91 +40,136 @@ body {
 
 .nav-menu a {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     color: rgb(15, 81, 24);
-    transition: color 0.3s;
+    padding: 10px;
+    transition: color 0.3s, transform 0.3s;
 }
 
+/* Hover Effect */
 .nav-menu a:hover {
-    color: #007BFF;
+    color: #1cac51;
+    transform: scale(1.1);
+}
+
+/* Active Page Highlight */
+.nav-menu .active {
+    color: green;
+    border-bottom: 2px solid green;
+}
+
+/* Add padding to prevent content from hiding under fixed header */
+body {
+    padding-top: 80px;
 }
 
 /* Hero Section */
 .hero {
+    margin-top: 75px; 
     position: relative;
     width: 100%;
     height: 400px;
-    overflow: hidden;
+    background: url("../assest/plumbing-service.jpg") center/cover no-repeat;
 }
 
 .hero img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    height: auto;
 }
-
-/* Hero Text - Directly on Image */
+.hero-text h1, .hero-text p {
+    color: white;
+    display: block;
+    visibility: visible;
+    z-index: 10;
+}
 .hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
     text-align: center;
-    font-size: 24px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-}
-
-.hero-text h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero-text ul {
-    list-style: none;
-    padding: 0;
-    font-size: 22px;
-}
-
-.hero-text li {
-    margin: 5px 0;
-}
-
-/* Call Now Button */
-.call-now {
-    display: inline-block;
-    font-size: 22px;
+    
+    padding: 20px;
+    border-radius: 8px;
     color: white;
-    font-weight: bold;
-    text-decoration: none;
-    background: orange;
-    padding: 10px 15px;
-    border-radius: 5px;
 }
 
-/* Responsive */
+/* Call Button */
+.call-now {
+    background: orange;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.call-now:hover {
+    background: darkgreen;
+}
+
+/* Benefits Section */
+.hero ul {
+    list-style: none;
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+    margin: 20px auto;
+    display: inline-block;
+}
+
+.hero ul li {
+    margin: 10px 0;
+}
+
+/* Services Section */
+.services {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 60px 10%;
+    gap: 20px;
+}
+
+/* Individual Service Box */
+.service {
+    flex: 1;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Hover effect */
+.service:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .header-container {
+    .services {
         flex-direction: column;
         align-items: center;
     }
 
-    .nav-menu {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .hero {
-        height: 300px;
+    .service {
+        width: 80%;
+        margin-bottom: 20px;
     }
 
     .hero-text {
-        font-size: 18px;
-    }
-
-    .hero-text h1 {
-        font-size: 28px;
+        width: 90%;
+        font-size: 16px;
     }
 }
